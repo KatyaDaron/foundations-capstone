@@ -7,7 +7,11 @@ function getRestaurants() {
                 const div = document.createElement('div');
                 div.className = 'rest-card';
                 div.id = 'card-' + restaurant.restaurant_id;
-              
+
+                const typeDiv = document.createElement('div');
+                typeDiv.className = 'type';
+                typeDiv.textContent = restaurant.type;
+
                 const nameDiv = document.createElement('div');
                 nameDiv.className = 'name';
                 nameDiv.textContent = restaurant.name;
@@ -26,6 +30,7 @@ function getRestaurants() {
                 image.src = restaurant.image;
                 image.alt = 'coffee cup picture';
               
+                div.appendChild(typeDiv);
                 div.appendChild(nameDiv);
                 div.appendChild(description);
                 div.appendChild(image);

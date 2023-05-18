@@ -20,6 +20,7 @@ module.exports = {
 
             create table restaurants (
                 restaurant_id serial primary key, 
+                type varchar(255),
                 name varchar(255),
                 image text,
                 description text,
@@ -40,8 +41,8 @@ module.exports = {
                 description text
             );
 
-            insert into restaurants (name, image, description, visit_link)
-            values ('CUP OF JOE COFFEE CO', 'https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'Cup of Joe Coffee Company in Brooklyn is the ultimate coffee lovers paradise. Their skilled baristas make coffee thats unmatched in quality and taste. With a cozy atmosphere and friendly staff, you will feel right at home. They offer an extensive menu of drinks, from classic lattes to unique concoctions. It is no wonder why this coffee shop is a beloved spot for locals and visitors alike.', 'https://www.cupofjoecoffeeco.com');
+            insert into restaurants (type, name, image, description, visit_link)
+            values ('Cofee Shop', 'CUP OF JOE COFFEE CO', 'https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 'Cup of Joe Coffee Company in Brooklyn is the ultimate coffee lovers paradise. Their skilled baristas make coffee thats unmatched in quality and taste. With a cozy atmosphere and friendly staff, you will feel right at home. They offer an extensive menu of drinks, from classic lattes to unique concoctions. It is no wonder why this coffee shop is a beloved spot for locals and visitors alike.', 'https://www.cupofjoecoffeeco.com');
             
             insert into routes (name, image, description)
             values ('BROOKLYN BRIDGE PROMENADE', 'https://www.tripsavvy.com/thmb/xwFkaiaz1uVVegJlmzMHDT1Fxwo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-544225630-5c2ba83bc9e77c00010a688c.jpg', 'The Brooklyn Bridge Promenade offers stunning views of the Manhattan skyline and the East River, while also allowing walkers to appreciate the architecture and history of the iconic Brooklyn Bridge. It is a great way to get some exercise, fresh air, and experience one of the most famous landmarks in New York City.');
