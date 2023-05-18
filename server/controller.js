@@ -55,7 +55,7 @@ module.exports = {
             insert into routes (type, name, image, description)
             values ('City View Walks', 'BROOKLYN BRIDGE PROMENADE', 'https://www.tripsavvy.com/thmb/xwFkaiaz1uVVegJlmzMHDT1Fxwo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-544225630-5c2ba83bc9e77c00010a688c.jpg', 'The Brooklyn Bridge Promenade offers stunning views of the Manhattan skyline and the East River, while also allowing walkers to appreciate the architecture and history of the iconic Brooklyn Bridge. It is a great way to get some exercise, fresh air, and experience one of the most famous landmarks in New York City.'),
             ('Ocean View Walks', 'CONEY ISLAND BOARDWALK', 'https://www.archpaper.com/wp-content/uploads/2021/11/enzo-tica-eszYwTpr7m4-unsplash-1280x853.jpg', 'The Coney Island Boardwalk is a historic boardwalk that runs along the beach and offers stunning views of the Atlantic Ocean. It has an amusement park rides, and various food stands. It''s a great place for a leisurely walk, people watching, and enjoying the lively atmosphere of this iconic New York City destination.'),
-            ('Urban Walks', 'BUSHWICK STREET ART WALK', 'https://yrofthemonkey.com/wp-content/uploads/2017/11/Mural37.jpg', 'Bushwick is a neighborhood in Brooklyn known for its vibrant street art scene. Taking a walk through the streets of Bushwick is a great way to discover some amazing murals, graffiti and art installations. The Bushwick Collective, a group of street artists who have transformed the neighborhood''s walls into an outdoor art gallery.');
+            ('Urban Walks', 'BUSHWICK STREET ART WALK', 'https://miro.medium.com/v2/resize:fit:1200/1*0qAJBS_QEWYYjIw9nP2gjg.jpeg', 'Bushwick is a neighborhood in Brooklyn known for its vibrant street art scene. Taking a walk through the streets of Bushwick is a great way to discover some amazing murals, graffiti and art installations. The Bushwick Collective, a group of street artists who have transformed the neighborhood''s walls into an outdoor art gallery.');
 
             insert into parks (type, name, image, description)
             values ('Tranquil Strolls', 'PROSPECT PARK', 'https://imgs.6sqft.com/wp-content/uploads/2017/06/19174904/prospectpark-1024x654.jpg', 'Prospect Park is a 585-acre park and one of the largest in Brooklyn. It offers a wide range of activities, including biking, hiking, picnicking, and sports. It also features the Brooklyn Botanic Garden and the Prospect Park Zoo.'),
@@ -75,23 +75,29 @@ module.exports = {
         })
         .catch(err => console.log(err))
     },
+    getRoutes: (req, res) => {
+        sequelize.query(`
+            select *
+            from routes;
+        `).then((dbRes) => {
+            res.status(200).send(dbRes[0])
+        })
+        .catch(err => console.log(err))
+    },
+    getParks: (req, res) => {
+        sequelize.query(`
+            select *
+            from parks;
+        `).then((dbRes) => {
+            res.status(200).send(dbRes[0])
+        })
+        .catch(err => console.log(err))
+    },
     // createCity: (req, res) => {
     //     let { name, rating, countryId } = req.body;
     //     sequelize.query(`
     //         insert into cities (name, rating, country_id)
     //         values ('${name}', ${rating}, ${countryId});
-    //     `).then((dbRes) => {
-    //         res.status(200).send(dbRes[0])
-    //     })
-    //     .catch(err => console.log(err))
-    // },
-    // getCities: (req, res) => {
-    //     sequelize.query(`
-    //         select ct.city_id, ct.name city, ct.rating, c.country_id, c.name country
-    //         from cities ct
-    //         join countries c
-    //         on ct.country_id = c.country_id
-    //         order by rating desc
     //     `).then((dbRes) => {
     //         res.status(200).send(dbRes[0])
     //     })
