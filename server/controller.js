@@ -29,6 +29,7 @@ module.exports = {
 
             create table routes (
                 route_id serial primary key,
+                type varchar(255),
                 name varchar(255),
                 image text,
                 description text
@@ -50,8 +51,10 @@ module.exports = {
             ('Bets Family Dining', 'SOTTOCASA PIZZERIA', 'https://www.recipetineats.com/wp-content/uploads/2020/05/Pizza-Crust-without-yeast_5-SQ.jpg', 'Sottocasa Pizzeria in Brooklyn is the ultimate family dining experience, featuring authentic Italian cuisine and a warm, inviting atmosphere. Their wood-fired pizzas are renowned for their crispy crusts and delicious toppings, while their extensive wine list caters to all palates. With attentive service and a lively ambiance, Sottocasa Pizzeria is the perfect place to gather with loved ones and enjoy a memorable meal together.', 'https://sottocasanyc.com'),
             ('Sweet Sanctuary', 'TAIYAKI NYC', 'https://images.squarespace-cdn.com/content/v1/57749e263e00be33b76c3777/1657921159328-DS2RVELGVK3KM8YMJ0BS/image-asset.jpeg', 'Taiyaki NYC in Brooklyn is a popular dessert spot known for their delicious Japanese-style fish-shaped cones filled with soft-serve ice cream. Their menu also features a variety of sweet and savory treats, including mochi waffles and matcha lattes. With a vibrant and colorful atmosphere, Taiyaki NYC is the perfect place to satisfy your sweet tooth and capture Instagram-worthy moments.', 'https://taiyakinyc.com');
             
-            insert into routes (name, image, description)
-            values ('BROOKLYN BRIDGE PROMENADE', 'https://www.tripsavvy.com/thmb/xwFkaiaz1uVVegJlmzMHDT1Fxwo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-544225630-5c2ba83bc9e77c00010a688c.jpg', 'The Brooklyn Bridge Promenade offers stunning views of the Manhattan skyline and the East River, while also allowing walkers to appreciate the architecture and history of the iconic Brooklyn Bridge. It is a great way to get some exercise, fresh air, and experience one of the most famous landmarks in New York City.');
+            insert into routes (type, name, image, description)
+            values ('City View Walks', 'BROOKLYN BRIDGE PROMENADE', 'https://www.tripsavvy.com/thmb/xwFkaiaz1uVVegJlmzMHDT1Fxwo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-544225630-5c2ba83bc9e77c00010a688c.jpg', 'The Brooklyn Bridge Promenade offers stunning views of the Manhattan skyline and the East River, while also allowing walkers to appreciate the architecture and history of the iconic Brooklyn Bridge. It is a great way to get some exercise, fresh air, and experience one of the most famous landmarks in New York City.'),
+            ('Ocean View Walks', 'CONEY ISLAND BOARDWALK', 'https://www.archpaper.com/wp-content/uploads/2021/11/enzo-tica-eszYwTpr7m4-unsplash-1280x853.jpg', 'The Coney Island Boardwalk is a historic boardwalk that runs along the beach and offers stunning views of the Atlantic Ocean. It has an amusement park rides, and various food stands. It''s a great place for a leisurely walk, people watching, and enjoying the lively atmosphere of this iconic New York City destination.'),
+            ('Urban Walks', 'BUSHWICK STREET ART WALK', 'https://yrofthemonkey.com/wp-content/uploads/2017/11/Mural37.jpg', 'Bushwick is a neighborhood in Brooklyn known for its vibrant street art scene. Taking a walk through the streets of Bushwick is a great way to discover some amazing murals, graffiti and art installations. The Bushwick Collective, a group of street artists who have transformed the neighborhood''s walls into an outdoor art gallery.');
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200);
