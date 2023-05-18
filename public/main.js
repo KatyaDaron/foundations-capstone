@@ -28,7 +28,7 @@ function getRestaurants() {
               
                 const image = document.createElement('img');
                 image.src = restaurant.image;
-                image.alt = 'coffee cup picture';
+                image.alt = 'restaurant picture';
               
                 div.appendChild(typeDiv);
                 div.appendChild(nameDiv);
