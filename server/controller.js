@@ -9,7 +9,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
             rejectUnauthorized: false
         }
     }
-})
+});
 
 module.exports = {
     seed: (req, res) => {
@@ -37,6 +37,7 @@ module.exports = {
 
             create table parks (
                 park_id serial primary key,
+                type varchar(255),
                 name varchar(255),
                 image text,
                 description text
@@ -55,6 +56,11 @@ module.exports = {
             values ('City View Walks', 'BROOKLYN BRIDGE PROMENADE', 'https://www.tripsavvy.com/thmb/xwFkaiaz1uVVegJlmzMHDT1Fxwo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-544225630-5c2ba83bc9e77c00010a688c.jpg', 'The Brooklyn Bridge Promenade offers stunning views of the Manhattan skyline and the East River, while also allowing walkers to appreciate the architecture and history of the iconic Brooklyn Bridge. It is a great way to get some exercise, fresh air, and experience one of the most famous landmarks in New York City.'),
             ('Ocean View Walks', 'CONEY ISLAND BOARDWALK', 'https://www.archpaper.com/wp-content/uploads/2021/11/enzo-tica-eszYwTpr7m4-unsplash-1280x853.jpg', 'The Coney Island Boardwalk is a historic boardwalk that runs along the beach and offers stunning views of the Atlantic Ocean. It has an amusement park rides, and various food stands. It''s a great place for a leisurely walk, people watching, and enjoying the lively atmosphere of this iconic New York City destination.'),
             ('Urban Walks', 'BUSHWICK STREET ART WALK', 'https://yrofthemonkey.com/wp-content/uploads/2017/11/Mural37.jpg', 'Bushwick is a neighborhood in Brooklyn known for its vibrant street art scene. Taking a walk through the streets of Bushwick is a great way to discover some amazing murals, graffiti and art installations. The Bushwick Collective, a group of street artists who have transformed the neighborhood''s walls into an outdoor art gallery.');
+
+            insert into parks (type, name, image, description)
+            values ('Tranquil Strolls', 'PROSPECT PARK', 'https://imgs.6sqft.com/wp-content/uploads/2017/06/19174904/prospectpark-1024x654.jpg', 'Prospect Park is a 585-acre park and one of the largest in Brooklyn. It offers a wide range of activities, including biking, hiking, picnicking, and sports. It also features the Brooklyn Botanic Garden and the Prospect Park Zoo.'),
+            ('Leisurely Walk with The City View', 'BROOKLYN BRIDGE PARK', 'https://media.timeout.com/images/105683556/image.jpg', 'This waterfront park stretches for 1.3 miles along the East River and offers stunning views of the Manhattan skyline. It features several piers with recreational activities, including a beach, volleyball courts, and a roller skating rink.'),
+            ('Iconic Sunset Walk', 'SHORE ROAD PARK', 'https://www.nycgovparks.org/pagefiles/124/shore-road-parkway-sunset__5a849208a468e.jpg', 'Shore Road Park is a waterfront park located in the Bay Ridge neighborhood of Brooklyn. It offers stunning views of the New York Harbor and the Verrazzano-Narrows Bridge. The park features a playground, bike path, fitness area and more.');
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200);

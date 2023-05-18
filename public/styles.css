@@ -72,6 +72,7 @@ nav a:hover {
 .header-txt h1,
 .header-txt h2 {
     color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .explore-by-category {
