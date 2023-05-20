@@ -156,6 +156,16 @@ const formSubmit = (event) => {
     };
   
     console.log(formData);
+
+    const submittedText = document.createElement('div');
+    submittedText.id = 'submitted-text';
+    submittedText.innerText = 'Thank you for your contribution!';
+    submittedText.style.fontFamily = 'cursive';
+    form.appendChild(submittedText);
+
+    setTimeout(() => {
+      submittedText.remove();
+    }, 3000);
   
     form.reset();
   }
