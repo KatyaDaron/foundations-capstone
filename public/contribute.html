@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribute</title>
+    <link href="contribute.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div id="bk-logo">
+            <h3>BrookDiscover</h3>
+        </div>
+        <ol>
+            <li class="crumb"><a href="./index.html">Home</a></li>
+            <li class="crumb"><a href="./restaurants.html">Restaurants</a></li>
+            <li class="crumb"><a href="./routes.html">Walking Routes</a></li>
+            <li class="crumb"><a href="./parks.html">Parks</a></li>
+            <li class="crumb"><a href="./about.html">About</a></li>
+        </ol>
+    </nav>
+    
+    <div class="header-txt">
+        <h1>BrookDiscover</h1>
+    </div>
+<div class="form-container">
+    <form>
+        <label for="category">Choose Category:</label>
+        <select id="category" name="category">
+          <option value="restaurants">Restaurants</option>
+          <option value="walking_routes">Walking Routes</option>
+          <option value="parks">Parks</option>
+        </select>
+        
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" placeholder="Specify the type or category (e.g., Brunch Spot)" required>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Provide the name of the place" required>
+        
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" maxlength="350" placeholder="Provide the description (max 350 characters)" required>
+        
+        <label for="image">Image:</label>
+        <input type="text" id="image" name="image" placeholder="Provide the image URL" required>
+        
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <footer>
+        <p>BrooklyDiscover &copy; 2023 | Made with <span class="heart">&#10084;</span> | <a href="mailto:katyadaron1@gmail.com">Contact</a> | <a href="contribute.html">Contribute</a></p>
+    </footer>
+    
+</body>
+</html>
