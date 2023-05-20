@@ -34,16 +34,21 @@
         </select>
         
         <label for="type">Type:</label>
-        <input type="text" id="type" name="type" placeholder="Specify the type or category (e.g., Brunch Spot)" required>
+        <input type="text" id="type" name="type" placeholder="Type or category (e.g., Brunch Spot)" required>
         
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Provide the name of the place" required>
+        <input type="text" id="name" name="name" placeholder="Name of the place" required>
         
         <label for="description">Description:</label>
-        <input type="text" id="description" name="description" maxlength="350" placeholder="Provide the description (max 350 characters)" required>
+        <input type="text" id="description" name="description" maxlength="350" placeholder="Description (max 350 characters)" required>
         
+        <div id="linkInputContainer" class="input-container">
+            <label for="link">Link:</label>
+            <input type="text" id="link" name="link" placeholder="Restaurant webpage" required>
+        </div>
+
         <label for="image">Image:</label>
-        <input type="text" id="image" name="image" placeholder="Provide the image URL" required>
+        <input type="text" id="image" name="image" placeholder="Image URL" required>
         
         <input type="submit" value="Submit">
       </form>
@@ -53,5 +58,6 @@
         <p>BrooklyDiscover &copy; 2023 | Made with <span class="heart">&#10084;</span> | <a href="mailto:katyadaron1@gmail.com">Contact</a> | <a href="contribute.html">Contribute</a></p>
     </footer>
     
+    <script src="main.js"></script>
 </body>
 </html>

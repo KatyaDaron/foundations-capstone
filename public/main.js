@@ -1,6 +1,16 @@
 const restContainer = document.querySelector('.restaurants-main');
 const routesContainer = document.querySelector('.routes-main');
 const parksContainer = document.querySelector('.parks-main');
+const categoryDropdown = document.getElementById('category');
+const linkInputContainer = document.getElementById('linkInputContainer');
+
+categoryDropdown.addEventListener('change', function() {
+  if (categoryDropdown.value === 'restaurants') {
+    linkInputContainer.style.display = 'flex';
+  } else {
+    linkInputContainer.style.display = 'none';
+  }
+});
 
 function getRestaurants() {
     axios.get('http://localhost:4004/restaurants')
