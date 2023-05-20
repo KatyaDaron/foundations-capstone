@@ -1,16 +1,9 @@
 const restContainer = document.querySelector('.restaurants-main');
 const routesContainer = document.querySelector('.routes-main');
 const parksContainer = document.querySelector('.parks-main');
-const categoryDropdown = document.getElementById('category');
-const linkInputContainer = document.getElementById('linkInputContainer');
-
-categoryDropdown.addEventListener('change', function() {
-  if (categoryDropdown.value === 'restaurants') {
-    linkInputContainer.style.display = 'flex';
-  } else {
-    linkInputContainer.style.display = 'none';
-  }
-});
+const categoryDropdown = document.querySelector('#category');
+const linkInputContainer = document.querySelector('#linkInputContainer');
+const form = document.querySelector('form');
 
 function getRestaurants() {
     axios.get('http://localhost:4004/restaurants')
@@ -121,6 +114,52 @@ function getParks() {
         })
 }
 
-getRestaurants();
-getRoutes();
-getParks();
+restContainer === null || restContainer === void 0
+  ? void 0
+  : getRestaurants();
+
+routesContainer === null || routesContainer === void 0
+  ? void 0
+  : getRoutes();
+
+parksContainer === null || parksContainer === void 0
+  ? void 0
+  : getParks();
+
+categoryDropdown === null || categoryDropdown === void 0
+    ? void 0
+    : categoryDropdown.addEventListener('change', function() {
+    if (categoryDropdown.value === 'restaurants') {
+      linkInputContainer.style.display = 'flex';
+    } else {
+      linkInputContainer.style.display = 'none';
+    }
+  });
+
+const formSubmit = (event) => {
+    event.preventDefault();
+  
+    const category = document.getElementById('category').value;
+    const type = document.getElementById('type').value;
+    const name = document.getElementById('name').value;
+    const description = document.getElementById('description').value;
+    const image = document.getElementById('image').value;
+    const link = document.getElementById('link').value;
+  
+    const formData = {
+      category,
+      type,
+      name,
+      description,
+      image,
+      link
+    };
+  
+    console.log(formData);
+  
+    form.reset();
+  }
+
+  form === null || form === void 0
+  ? void 0
+  : form.addEventListener('submit', formSubmit);
