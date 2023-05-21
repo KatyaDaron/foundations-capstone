@@ -73,7 +73,7 @@ module.exports = {
         `).then((dbRes) => {
             res.status(200).send(dbRes[0])
         })
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     },
     getRoutes: (req, res) => {
         sequelize.query(`
@@ -82,7 +82,7 @@ module.exports = {
         `).then((dbRes) => {
             res.status(200).send(dbRes[0])
         })
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     },
     getParks: (req, res) => {
         sequelize.query(`
@@ -91,26 +91,37 @@ module.exports = {
         `).then((dbRes) => {
             res.status(200).send(dbRes[0])
         })
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     },
-    // createCity: (req, res) => {
-    //     let { name, rating, countryId } = req.body;
-    //     sequelize.query(`
-    //         insert into cities (name, rating, country_id)
-    //         values ('${name}', ${rating}, ${countryId});
-    //     `).then((dbRes) => {
-    //         res.status(200).send(dbRes[0])
-    //     })
-    //     .catch(err => console.log(err))
-    // },
-    // deleteCity: (req, res) => {
-    //     let { id } = req.params;
-    //     sequelize.query(`
-    //         delete from cities
-    //         where city_id = ${id};
-    //     `).then((dbRes) => {
-    //         res.status(200).send(dbRes[0])
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+    createPost: (req, res) => {
+        let { category, type, name, description, image, link } = req.body;
+        if (category === 'restaurants') {
+            sequelize.query(`
+            insert into restaurants (type, name, description, image, visit_link)
+            values ('${type}', '${name}', '${description}', '${image}', '${link}')
+        `).then(dbRes => {
+                console.log(dbRes[0]);
+                res.sendStatus(200);
+            })
+                .catch(err => console.log(err))
+        } else if (category === 'walking_routes') {
+            sequelize.query(`
+                    insert into routes (type, name, description, image)
+                    values ('${type}', '${name}', '${description}', '${image}')
+                    `).then(dbRes => {
+                console.log(dbRes[0]);
+                res.sendStatus(200);
+            })
+                .catch(err => console.log(err))
+        } else if (category === 'parks') {
+            sequelize.query(`
+                    insert into parks (type, name, description, image)
+                    values ('${type}', '${name}', '${description}', '${image}')
+                    `).then(dbRes => {
+                console.log(dbRes[0]);
+                res.sendStatus(200);
+            })
+                .catch(err => console.log(err))
+        }
+    }
 }

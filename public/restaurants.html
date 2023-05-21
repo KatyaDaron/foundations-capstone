@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Restaurants</title>
-        <link href="page.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav>
-            <div id="bk-logo">
-                <h3>BrookDiscover</h3>
+
+<head>
+    <title>Restaurants</title>
+    <link href="page.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div id="bk-logo">
+            <h3>BrookDiscover</h3>
+        </div>
+        <ol>
+            <li class="crumb"><a href="./index.html">Home</a></li>
+            <li class="crumb"><a href="./restaurants.html">Restaurants</a></li>
+            <li class="crumb"><a href="./routes.html">Walking Routes</a></li>
+            <li class="crumb"><a href="./parks.html">Parks</a></li>
+            <li class="crumb"><a href="./about.html">About</a></li>
+        </ol>
+    </nav>
+
+    <header class="header" id="page1">
+        <div class="header-txt">
+            <h1>Our Favorite Restaurants In Brooklyn</h1>
+        </div>
+    </header>
+
+    <main class="restaurants-main">
+        <div id="restaurant">
+            <div class="title-txt">
+                <button class="btn" id="btnPick">PICK A RESTAURANT FOR ME</button>
             </div>
-            <ol>
-                <li class="crumb"><a href="./index.html">Home</a></li>
-                <li class="crumb"><a href="./restaurants.html">Restaurants</a></li>
-                <li class="crumb"><a href="./routes.html">Walking Routes</a></li>
-                <li class="crumb"><a href="./parks.html">Parks</a></li>
-                <li class="crumb"><a href="./about.html">About</a></li>
-            </ol>
-        </nav>
+        </div>
+    </main>
 
-        <header class="header" id="page1">
-            <div class="header-txt">
-                <h1>Our Favorite Restaurants In Brooklyn</h1>
-            </div>
-        </header>
-          
-        <main class="restaurants-main">
-            <div id="restaurant">
-                <div class="title-txt">
-                    <button class="btn" id="btnPick">PICK A RESTAURANT FOR ME</button>
-                </div>
-            </div>
-        </main>
+    <br>
+    <br>
 
-<br>
-<br>
+    <footer>
+        <p>BrooklyDiscover &copy; 2023 | Made with <span class="heart">&#10084;</span> | <a
+                href="mailto:katyadaron1@gmail.com">Contact</a> | <a href="contribute.html">Contribute</a></p>
+    </footer>
 
-<footer>
-    <p>BrooklyDiscover &copy; 2023 | Made with <span class="heart">&#10084;</span> | <a href="mailto:katyadaron1@gmail.com">Contact</a> | <a href="contribute.html">Contribute</a></p>
-</footer>
-
-<script src="../node_modules/axios/dist/axios.min.js"></script>
-<script src="main.js"></script>
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
