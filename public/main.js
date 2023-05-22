@@ -7,6 +7,8 @@ const linkInputContainer = document.querySelector('#linkInputContainer');
 const form = document.querySelector('form');
 const restButton = document.querySelector("#btnPick");
 const restSearchInput = document.querySelector('#rest-search-input');
+const routeSearchInput = document.querySelector('#route-search-input');
+const parkSearchInput = document.querySelector('#park-search-input');
 
 const baseURL = 'http://localhost:4004';
 
@@ -77,6 +79,8 @@ function displayRestaurants(restaurantsArr) {
 }
 
 function displayRoutes(routesArr) {
+  routesContainer.innerHTML = '';
+
   routesArr.forEach(route => {
     const div = document.createElement('div');
     div.className = 'route-card';
@@ -291,6 +295,32 @@ function performRestSearch(query) {
       } else {
         console.log(`Found:`, res.data);
         displayRestaurants(res.data);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+routeSearchInput === null || routeSearchInput === void 0
+  ? void 0
+  : routeSearchInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const searchQuery = routeSearchInput.value.toLowerCase();
+      performRouteSearch(searchQuery);
+      routeSearchInput.value = '';
+    }
+  });
+
+function performRouteSearch(query) {
+  console.log('Performing search for:', query);
+  axios.get(`${baseURL}/routes/search?q=${query}`)
+    .then(res => {
+      console.log(res.data)
+      if (res.data.length === 0) {
+        alert('Sorry, there is nothing that matches your search');
+      } else {
+        console.log(`Found:`, res.data);
+        displayRoutes(res.data);
       }
     })
     .catch(err => console.log(err));

@@ -142,5 +142,16 @@ module.exports = {
             res.status(200).send(dbRes[0])
         })
             .catch(err => console.log(err))
+    },
+    searchRoutes: (req, res) => {
+        let query = req.query.q;
+        sequelize.query(`
+            select *
+            from routes
+            where lower(type) like '%${query}%' or lower(name) like '%${query}%' or lower(description) like '%${query}%';
+        `).then((dbRes) => {
+            res.status(200).send(dbRes[0])
+        })
+            .catch(err => console.log(err))
     }
 }
