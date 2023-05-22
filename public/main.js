@@ -5,6 +5,7 @@ const homeMain = document.querySelector('.home-main');
 const categoryDropdown = document.querySelector('#category');
 const linkInputContainer = document.querySelector('#linkInputContainer');
 const form = document.querySelector('form');
+const restButton = document.querySelector("#btnPick"); 
 
 const baseURL = 'http://localhost:4004';
 
@@ -246,4 +247,19 @@ function displayWeather(location, temp, condition, tempMax, tempMin) {
 
   const firstChild = homeMain.firstChild;
   homeMain.insertBefore(weatherContainer, firstChild);
+}
+
+restButton === null || restButton === void 0
+  ? void 0
+  : restButton.addEventListener("click", pickRestaurant);
+
+  function pickRestaurant () {
+    const restaurants = document.querySelectorAll(".rest-card");
+    let restArr = [...restaurants];
+    let numRestCards = restArr.length;
+    let randomNum = Math.floor(Math.random() * numRestCards);
+    let selectedRest = restArr[randomNum];
+    let link = selectedRest.querySelector("a").href;
+    
+    window.open(link, "_blank"); 
 }
