@@ -6,7 +6,7 @@ const categoryDropdown = document.querySelector('#category');
 const linkInputContainer = document.querySelector('#linkInputContainer');
 const form = document.querySelector('form');
 const restButton = document.querySelector("#btnPick");
-const searchInput = document.querySelector('#search-input');
+const restSearchInput = document.querySelector('#rest-search-input');
 
 const baseURL = 'http://localhost:4004';
 
@@ -35,6 +35,8 @@ function getParks() {
 }
 
 function displayRestaurants(restaurantsArr) {
+  restContainer.innerHTML = '';
+
   restaurantsArr.forEach(restaurant => {
     const div = document.createElement('div');
     div.className = 'rest-card';
@@ -268,27 +270,27 @@ function pickRestaurant() {
   window.open(link, "_blank");
 }
 
-searchInput === null || searchInput === void 0
+restSearchInput === null || restSearchInput === void 0
   ? void 0
-  : searchInput.addEventListener('keypress', function (event) {
+  : restSearchInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
       event.preventDefault();
-      const searchQuery = searchInput.value;
-      performSearch(searchQuery);
+      const searchQuery = restSearchInput.value.toLowerCase();
+      performRestSearch(searchQuery);
+      restSearchInput.value = '';
     }
   });
 
-function performSearch(query) {
+function performRestSearch(query) {
   console.log('Performing search for:', query);
   axios.get(`${baseURL}/restaurants/search?q=${query}`)
     .then(res => {
       console.log(res.data)
       if (res.data.length === 0) {
-        alert(`Sorry...there is no match.`);
+        alert('Sorry, there is nothing that matches your search');
       } else {
-        res.data.forEach(restaurant => {
-          console.log(`Found:`, restaurant);
-        })
+        console.log(`Found:`, res.data);
+        displayRestaurants(res.data);
       }
     })
     .catch(err => console.log(err));

@@ -137,7 +137,7 @@ module.exports = {
         sequelize.query(`
             select *
             from restaurants
-            where type like '%${query}%' or name like '%${query}%' or description like '%${query}%';
+            where lower(type) like '%${query}%' or lower(name) like '%${query}%' or lower(description) like '%${query}%';
         `).then((dbRes) => {
             res.status(200).send(dbRes[0])
         })

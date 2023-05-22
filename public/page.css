@@ -112,7 +112,7 @@ button:hover {
     position: relative;
     width: 33.33%;
     display: inline-block;
-    vertical-align: top;
+    /* vertical-align: top; */
     height: 100%;
 }
 
@@ -151,6 +151,8 @@ p {
     font-size: 16px;
     color: #777;
     margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 footer {
@@ -184,8 +186,9 @@ footer a:hover {
     display: flex;
 }
 
-
-#search-input {
+#rest-search-input,
+#route-search-input,
+#park-search-input {
     padding: 7px;
     border: none;
     border-radius: 20px;
