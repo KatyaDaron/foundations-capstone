@@ -5,7 +5,8 @@ const homeMain = document.querySelector('.home-main');
 const categoryDropdown = document.querySelector('#category');
 const linkInputContainer = document.querySelector('#linkInputContainer');
 const form = document.querySelector('form');
-const restButton = document.querySelector("#btnPick"); 
+const restButton = document.querySelector("#btnPick");
+const searchInput = document.querySelector('#search-input');
 
 const baseURL = 'http://localhost:4004';
 
@@ -54,6 +55,9 @@ function displayRestaurants(restaurantsArr) {
     link.href = restaurant.visit_link;
     link.target = '_blank';
     link.textContent = 'Visit >>';
+
+    const lineBreak = document.createElement('br');
+    description.appendChild(lineBreak);
 
     description.appendChild(link);
 
@@ -212,16 +216,16 @@ homeMain === null || homeMain === void 0
 
 function getWeather() {
   axios.get(`${baseURL}/weather`)
-  .then(res => {
-    console.log(res.data)
-    const location = res.data.location.name;
-    const temp = res.data.current.temp_f;
-    const condition = res.data.current.condition.text;
-    const tempMax = res.data.forecast.forecastday[0].day.maxtemp_f;
-    const tempMin = res.data.forecast.forecastday[0].day.mintemp_f;
-    displayWeather(location, temp, condition, tempMax, tempMin);
-  })
-  .catch(err => console.log(err));
+    .then(res => {
+      console.log(res.data)
+      const location = res.data.location.name;
+      const temp = res.data.current.temp_f;
+      const condition = res.data.current.condition.text;
+      const tempMax = res.data.forecast.forecastday[0].day.maxtemp_f;
+      const tempMin = res.data.forecast.forecastday[0].day.mintemp_f;
+      displayWeather(location, temp, condition, tempMax, tempMin);
+    })
+    .catch(err => console.log(err));
 }
 
 function displayWeather(location, temp, condition, tempMax, tempMin) {
@@ -253,13 +257,39 @@ restButton === null || restButton === void 0
   ? void 0
   : restButton.addEventListener("click", pickRestaurant);
 
-  function pickRestaurant () {
-    const restaurants = document.querySelectorAll(".rest-card");
-    let restArr = [...restaurants];
-    let numRestCards = restArr.length;
-    let randomNum = Math.floor(Math.random() * numRestCards);
-    let selectedRest = restArr[randomNum];
-    let link = selectedRest.querySelector("a").href;
-    
-    window.open(link, "_blank"); 
+function pickRestaurant() {
+  const restaurants = document.querySelectorAll(".rest-card");
+  let restArr = [...restaurants];
+  let numRestCards = restArr.length;
+  let randomNum = Math.floor(Math.random() * numRestCards);
+  let selectedRest = restArr[randomNum];
+  let link = selectedRest.querySelector("a").href;
+
+  window.open(link, "_blank");
+}
+
+searchInput === null || searchInput === void 0
+  ? void 0
+  : searchInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const searchQuery = searchInput.value;
+      performSearch(searchQuery);
+    }
+  });
+
+function performSearch(query) {
+  console.log('Performing search for:', query);
+  axios.get(`${baseURL}/restaurants/search?q=${query}`)
+    .then(res => {
+      console.log(res.data)
+      if (res.data.length === 0) {
+        alert(`Sorry...there is no match.`);
+      } else {
+        res.data.forEach(restaurant => {
+          console.log(`Found:`, restaurant);
+        })
+      }
+    })
+    .catch(err => console.log(err));
 }

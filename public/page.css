@@ -19,6 +19,9 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    font-weight: bold;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 #bk-logo {
@@ -175,4 +178,16 @@ footer a:hover {
 
 .heart {
     color: #777;
+}
+
+#search-container {
+    display: flex;
+}
+
+
+#search-input {
+    padding: 7px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
 }
