@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const { SERVER_PORT } = process.env
-const { seed, getRestaurants, getRoutes, getParks, createPost } = require('./controller.js')
+const { seed, getRestaurants, getRoutes, getParks, createPost, getWeather } = require('./controller.js')
 
 app.use(express.json())
 app.use(cors())
@@ -14,5 +14,6 @@ app.get('/restaurants', getRestaurants);
 app.get('/routes', getRoutes);
 app.get('/parks', getParks);
 app.post('/post', createPost);
+app.get('/weather', getWeather);
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))

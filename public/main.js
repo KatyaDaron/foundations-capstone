@@ -1,6 +1,7 @@
 const restContainer = document.querySelector('.restaurants-main');
 const routesContainer = document.querySelector('.routes-main');
 const parksContainer = document.querySelector('.parks-main');
+const homeMain = document.querySelector('.home-main');
 const categoryDropdown = document.querySelector('#category');
 const linkInputContainer = document.querySelector('#linkInputContainer');
 const form = document.querySelector('form');
@@ -202,4 +203,47 @@ form === null || form === void 0
 const createPost = body => {
   axios.post(`${baseURL}/post`, body)
     .catch(err => console.log(err));
+}
+
+homeMain === null || homeMain === void 0
+  ? void 0
+  : getWeather();
+
+function getWeather() {
+  axios.get(`${baseURL}/weather`)
+  .then(res => {
+    console.log(res.data)
+    const location = res.data.location.name;
+    const temp = res.data.current.temp_f;
+    const condition = res.data.current.condition.text;
+    const tempMax = res.data.forecast.forecastday[0].day.maxtemp_f;
+    const tempMin = res.data.forecast.forecastday[0].day.mintemp_f;
+    displayWeather(location, temp, condition, tempMax, tempMin);
+  })
+  .catch(err => console.log(err));
+}
+
+function displayWeather(location, temp, condition, tempMax, tempMin) {
+  const weatherContainer = document.createElement('div');
+  weatherContainer.classList.add('weather-container');
+
+  const locationElement = document.createElement('h1');
+  locationElement.textContent = `${location.toUpperCase()}`;
+  weatherContainer.appendChild(locationElement);
+
+  const temperatureElement = document.createElement('span');
+  temperatureElement.textContent = `${Math.round(temp)}°F`;
+  temperatureElement.classList.add('temperature');
+  weatherContainer.appendChild(temperatureElement);
+
+  const conditionElement = document.createElement('h3');
+  conditionElement.textContent = `${condition}`;
+  weatherContainer.appendChild(conditionElement);
+
+  const tempRangeElement = document.createElement('h3');
+  tempRangeElement.textContent = `H:${Math.round(tempMax)}°F L:${Math.round(tempMin)}°F`;
+  weatherContainer.appendChild(tempRangeElement);
+
+  const firstChild = homeMain.firstChild;
+  homeMain.insertBefore(weatherContainer, firstChild);
 }

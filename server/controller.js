@@ -1,5 +1,6 @@
 require('dotenv').config();
-const { CONNECTION_STRING } = process.env;
+const { CONNECTION_STRING, API_KEY } = process.env;
+const axios = require('axios');
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(CONNECTION_STRING, {
@@ -123,5 +124,12 @@ module.exports = {
             })
                 .catch(err => console.log(err))
         }
+    },
+    getWeather: (req, res) => {
+        axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=11214&days=1&aqi=no&alerts=no`)
+            .then((response) => {
+                res.status(200).send(response.data);
+            })
+            .catch(err => console.log(err))
     }
 }
