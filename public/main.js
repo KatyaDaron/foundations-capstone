@@ -111,6 +111,8 @@ function displayRoutes(routesArr) {
 }
 
 function displayParks(parksArr) {
+  parksContainer.innerHTML = '';
+
   parksArr.forEach(park => {
     const div = document.createElement('div');
     div.className = 'park-card';
@@ -321,6 +323,32 @@ function performRouteSearch(query) {
       } else {
         console.log(`Found:`, res.data);
         displayRoutes(res.data);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+parkSearchInput === null || parkSearchInput === void 0
+  ? void 0
+  : parkSearchInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const searchQuery = parkSearchInput.value.toLowerCase();
+      performParkSearch(searchQuery);
+      parkSearchInput.value = '';
+    }
+  });
+
+function performParkSearch(query) {
+  console.log('Performing search for:', query);
+  axios.get(`${baseURL}/parks/search?q=${query}`)
+    .then(res => {
+      console.log(res.data)
+      if (res.data.length === 0) {
+        alert('Sorry, there is nothing that matches your search');
+      } else {
+        console.log(`Found:`, res.data);
+        displayParks(res.data);
       }
     })
     .catch(err => console.log(err));
