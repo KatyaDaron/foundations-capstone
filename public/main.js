@@ -179,7 +179,7 @@ const formSubmit = (event) => {
     formData = {
       category: category.value,
       type: type.value,
-      name: name.value,
+      name: name.value.toUpperCase(),
       description: description.value,
       image: image.value
     };
@@ -187,7 +187,7 @@ const formSubmit = (event) => {
     formData = {
       category: category.value,
       type: type.value,
-      name: name.value,
+      name: name.value.toUpperCase(),
       description: description.value,
       image: image.value,
       link: link.value

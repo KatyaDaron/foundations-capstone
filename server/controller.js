@@ -96,6 +96,12 @@ module.exports = {
     },
     createPost: (req, res) => {
         let { category, type, name, description, image, link } = req.body;
+        type = type.split(' ');
+        let editedType = type.map(word => {
+            const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+            return capitalizedWord;
+        })
+        type = editedType.join(' ');
         if (category === 'restaurants') {
             sequelize.query(`
             insert into restaurants (type, name, description, image, visit_link)
