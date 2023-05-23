@@ -202,7 +202,7 @@ const formSubmit = (event) => {
 
   setTimeout(() => {
     submittedText.remove();
-  }, 3000);
+  }, 2000);
 
   createPost(formData);
 
