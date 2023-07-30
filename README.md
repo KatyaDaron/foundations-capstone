@@ -2,8 +2,8 @@
 
 BrookDiscover is a web application that showcases the hidden gems of Brooklyn and also serves as a vibrant platform for the community to share and explore their favorite local spots.
 
-## Project Video
-https://www.loom.com/share/9554d7e77aa543309e3ff215eb7de2a7
+## Project Demo
+[![BrookDiscover Demo](demo.png)](https://www.loom.com/share/9554d7e77aa543309e3ff215eb7de2a7)
 
 ## Features
 
@@ -16,5 +16,11 @@ https://www.loom.com/share/9554d7e77aa543309e3ff215eb7de2a7
 
 ## Technologies Used
 
-The project combines HTML, CSS and JavaScript for the client-side web interface.
-Node.js, Express.js, PostgreSQL and Sequelize are used for server-side operations, data storage and API functionality.
+* JavaScript
+* HTML
+* CSS
+* Axios
+* Node.js
+* Express.js
+* PostgreSQL
+* Sequelize
